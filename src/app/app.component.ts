@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   constructor(private renderer: Renderer2) {}
 
-  title = "SoGen_Front";
+  title = "SoGeneration";
 
   ngOnInit() {
     this.navHamburger = document.querySelector(".menu-hamburger");
