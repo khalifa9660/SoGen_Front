@@ -6,17 +6,20 @@
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
 }
 
 // body > main:has(+ footer) {
 //   min-height: 100vh;
 // }
 
-// body footer,
-// body header,
-// body main {
-//   position: relative;
-// }
+body footer,
+body header,
+body main {
+  position: relative;
+}
 
 header {
   position: relative;
@@ -61,11 +64,16 @@ header {
 
 .sign-in {
   position: relative;
-  right: -47%;
+  right: -44%;
   top: -18px;
   text-decoration: none;
-  color: black;
+  color: rgb(255, 254, 254);
   text-transform: uppercase;
+  border: 1px solid #000;
+  border-radius: 130px;
+  background: #000;
+  border-width: 6px 9px 6px;
+  background-color: #000;
 }
 
 .navbar ul li::after {
@@ -87,16 +95,28 @@ header {
   width: 30px;
 }
 
-.content {
+main {
+  margin: 2em auto;
   display: flex;
-  width: 100%;
-  align-items: baseline;
-  justify-content: center;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
+  justify-content: space-between;
+  width: 1258px;
+  height: 100vh;
 }
+
+article {
+  flex: 0 0 920px;
+  margin: 0;
+}
+
+// table {
+//   border-spacing: 0;
+//   border-collapse: collapse;
+//   width: 100%;
+//   text-align: left;
+//   vertical-align: top;
+//   position: relative;
+//   table-layout: fixed;
+// }
 
 @media screen and (max-width: 900px) {
   .navbar {
