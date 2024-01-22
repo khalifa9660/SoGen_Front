@@ -1,51 +1,26 @@
-<body>
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+
+  <main>
+    <app-sidenav
+      [sideNavStatus]="sideNavStatus"
+      [ngClass]="{ 'app-side-nav-open': sideNavStatus }"
+    ></app-sidenav>
+    <div
+      class="display-area p-3"
+      [ngClass]="{ 'display-area-shrink': sideNavStatus }"
+    >
+      <p class="fs-1 fw-bold fst-italic">Main Display Area</p>
+    </div>
+    <app-data-table></app-data-table>
+  </main>
+</div>
+
+<!-- <body>
   <div class="banner">
-    <header>
-      <nav class="navbar">
-        <a href="#" class="logo">SG</a>
-        <div class="nav-links">
-          <ul>
-            <li><a href="#active">Home</a></li>
-            <li><a href="#">Joueurs</a></li>
-            <li><a href="#">Equipes</a></li>
-          </ul>
-          <p><a class="sign-in" href="#">Connexion</a></p>
-        </div>
-        <img
-          *ngIf="mobileQuery.matches"
-          src="../assets/Img/icons8-menu-50.png"
-          alt="menu hamburger"
-          class="menu-hamburger"
-        />
-      </nav>
-    </header>
     <main class="content">
       <aside class="aside"></aside>
-      <article><app-data-table></app-data-table></article>
+      <article></article>
     </main>
   </div>
-</body>
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Nom</th>
-    </tr>
-    <tr>
-      <th>Age</th>
-    </tr>
-    <tr>
-      <th>Equipe</th>
-    </tr>
-    <tr>
-      <th>Pied fort</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>R.Robin</td>
-      <td>12</td>
-      <td>Man United</td>
-      <td>Droit</td>
-    </tr>
-  </tbody>
-</table> -->
+</body> -->

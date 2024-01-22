@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   navHamburger: any;
   navLinks: any;
   mobileQuery: MediaQueryList;
+  sideNavStatus: boolean = false;
 
   private _mobileQueryListener: () => void;
 

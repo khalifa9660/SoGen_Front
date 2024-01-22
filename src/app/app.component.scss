@@ -1,169 +1,87 @@
-@import url("https://fonts.googleapis.com/");
-.banner {
-  width: 100%;
-  height: 100vh;
-  background-image: url(../assets/Img/5968949.png);
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
-  scrollbar-width: thin;
-}
-
-// body > main:has(+ footer) {
-//   min-height: 100vh;
+// .banner {
+//   width: 100%;
+//   height: 100vh;
+//   background-image: url(../assets/Img/5968949.png);
+//   background-size: cover;
+//   background-position: center;
+//   overflow: hidden;
+//   overflow-y: scroll;
+//   scrollbar-color: rebeccapurple green;
+//   scrollbar-width: thin;
 // }
 
-body footer,
-body header,
-body main {
-  position: relative;
-}
-
-header {
-  position: relative;
-  border: 0.1px solid #000;
-  height: 36px;
-}
-
-.logo {
-  position: relative;
-  text-decoration: none;
-  color: black;
-  font-size: x-large;
-  top: -5px;
-}
-
-.navbar {
-  width: 95%;
-  margin: auto;
-  padding: 10px 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  border-bottom: 1px;
-}
-
-.navbar ul li {
-  list-style: none;
-  display: inline-block;
-  margin: 0 20px;
-  padding-top: -4px;
-  position: relative;
-  right: 305%;
-  align-items: baseline;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  color: black;
-  text-transform: uppercase;
-  align-items: center;
-}
-
-.sign-in {
-  position: relative;
-  right: -44%;
-  top: -18px;
-  text-decoration: none;
-  color: rgb(255, 254, 254);
-  text-transform: uppercase;
-  border: 1px solid #000;
-  border-radius: 130px;
-  background: #000;
-  border-width: 6px 9px 6px;
-  background-color: #000;
-}
-
-.navbar ul li::after {
-  content: "";
-  height: 3px;
-  width: 0;
-  background-color: #009688;
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  transition: 0.5s;
-}
-
-.navbar ul li:hover::after {
+app-header {
+  position: fixed;
   width: 100%;
-}
-
-.menu-hamburger {
-  width: 30px;
+  top: 0px;
+  height: 4rem;
+  z-index: 2;
 }
 
 main {
-  margin: 2em auto;
-  display: flex;
-  justify-content: space-between;
+  position: absolute;
   width: 1258px;
   height: 100vh;
+  top: 4rem;
+  z-index: 1;
 }
 
-article {
-  flex: 0 0 920px;
-  margin: 0;
+app-sidenav {
+  position: absolute;
+  left: 0rem;
+  width: 60px;
+  height: calc(200vh - 4rem);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: rgba(34, 34, 34, 1);
+  border-top: 1px solid white;
+  overflow-x: hidden;
+  white-space: nowrap;
+  transition: width 250ms linear;
 }
 
-// table {
-//   border-spacing: 0;
-//   border-collapse: collapse;
+.app-side-nav-open {
+  width: 250px;
+}
+
+.display-area {
+  position: absolute;
+  left: 60px;
+  width: calc(100% - 60px);
+  transition: left 250ms ease-in, width 250ms ease-in;
+}
+
+.display-area-shrink {
+  width: calc(100% - 250px);
+  left: 250px;
+}
+
+// .navbar ul li::after {
+//   content: "";
+//   height: 3px;
+//   width: 0;
+//   background-color: #009688;
+//   position: absolute;
+//   left: 0;
+//   bottom: -5px;
+//   transition: 0.5s;
+// }
+
+// .navbar ul li:hover::after {
 //   width: 100%;
-//   text-align: left;
-//   vertical-align: top;
-//   position: relative;
-//   table-layout: fixed;
+// }
+
+// main {
+//   margin: 2em auto;
+//   display: flex;
+//   justify-content: space-between;
+//   width: 1258px;
+//   height: 100vh;
+// }
+
+// article {
+//   flex: 0 0 920px;
+//   margin: 0;
 // }
 
 @media screen and (max-width: 900px) {
-  .navbar {
-    padding: 0;
-  }
-
-  .navbar .menu-hamburger {
-    display: block;
-  }
-
-  .mobile-menu {
-    margin-left: 0;
-  }
-
-  .nav-links {
-    top: 0;
-    left: 0;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.616);
-    backdrop-filter: blur(7px);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: -100%;
-    transition: all 0.5s ease;
-  }
-
-  .nav-links ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-links.mobile-menu {
-    margin-left: 0;
-  }
-
-  .navbar .nav-links ul li {
-    margin: 25px 0;
-    font-size: 1.2em;
-  }
-
-  .navbar .logo {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-  }
 }
