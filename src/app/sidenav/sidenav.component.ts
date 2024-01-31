@@ -12,27 +12,27 @@ export class SidenavComponent {
     {
       number: "1",
       name: "Home",
-      icon: "bi bi-house",
+      icon: "bi bi-house-door-fill",
     },
     {
       number: "2",
-      name: "Analytics",
-      icon: "bi bi-house",
+      name: "Joueurs",
+      icon: "bi bi-person-arms-up",
     },
     {
       number: "3",
-      name: "Products",
-      icon: "bi bi-house",
+      name: "Equipes",
+      icon: "bi bi-microsoft-teams",
     },
     {
       number: "4",
-      name: "Order",
-      icon: "bi bi-house",
+      name: "Nationalité",
+      icon: "bi bi-flag-fill",
     },
     {
       number: "5",
-      name: "Settings",
-      icon: "bi bi-house",
+      name: "Contact",
+      icon: "bi bi-mailbox2-flag",
     },
   ];
 

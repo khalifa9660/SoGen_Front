@@ -1,19 +1,21 @@
-<div class="container-fluid g-0">
-  <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+<div id="background">
+  <div class="container-fluid g-0">
+    <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
 
-  <main>
-    <app-sidenav
-      [sideNavStatus]="sideNavStatus"
-      [ngClass]="{ 'app-side-nav-open': sideNavStatus }"
-    ></app-sidenav>
-    <div
-      class="display-area p-3"
-      [ngClass]="{ 'display-area-shrink': sideNavStatus }"
-    >
-      <p class="fs-1 fw-bold fst-italic">Main Display Area</p>
-    </div>
-    <app-data-table></app-data-table>
-  </main>
+    <main>
+      <app-sidenav
+        [sideNavStatus]="sideNavStatus"
+        [ngClass]="{ 'app-side-nav-open': sideNavStatus }"
+      ></app-sidenav>
+      <div
+        class="display-area p-3"
+        [ngClass]="{ 'display-area-shrink': sideNavStatus }"
+      >
+        <p class="fs-1 fw-bold fst-italic">Main Display Area</p>
+        <article><app-data-table></app-data-table></article>
+      </div>
+    </main>
+  </div>
 </div>
 
 <!-- <body>
