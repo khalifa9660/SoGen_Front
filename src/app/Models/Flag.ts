@@ -1,4 +1,5 @@
 export interface FlagTeam {
-    Name: string;
-    image: string;
+    name: string;
+    code: string;
+    flag:string
 }

@@ -22,7 +22,22 @@ export class TeamService {
         return new HttpHeaders({
             'Content-Type': 'application/json',
             'X-RapidAPI-Key': '763f1903cemshf1814091940340dp16dfe1jsnb7781ae9d30a',
-            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com',
+            "access-control-allow-credentials": "true",
+            "access-control-allow-headers": "x-rapidapi-key, x-apisports-key, x-rapidapi-host",
+            "access-control-allow-methods": "GET, OPTIONS",
+            "access-control-allow-origin": "*",
+            "content-length": "14458",
+            "content-type": "application/json",
+            "date": "Sun, 04 Feb 2024 19:08:33 GMT",
+            "server": "RapidAPI-1.2.8",
+            "vary": "Accept-Encoding",
+            "x-rapidapi-region": "AWS - eu-central-1",
+            "x-rapidapi-version": "1.2.8",
+            "x-ratelimit-requests-limit": "100",
+            "x-ratelimit-requests-remaining": "95",
+            "x-ratelimit-requests-reset": "48525",
+            "x-request-id": "e3eb174d-cc61-4a4e-9ff5-e7aba19b2f0e"
         })
     }
 
