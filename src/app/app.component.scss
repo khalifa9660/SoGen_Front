@@ -42,9 +42,11 @@ app-sidenav {
   transition: width 250ms linear;
 }
 
-app-data-table {
+article {
   position: relative;
-  top: 4rem;
+  top: 8rem;
+  left: 47%;
+  width: 50%;
 }
 
 .app-side-nav-open {
