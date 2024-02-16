@@ -4,7 +4,7 @@ import { catchError, map, retry } from "rxjs";
 import { Token } from "@angular/compiler";
 import { Router } from "@angular/router";
 import { Observable, BehaviorSubject } from "rxjs";
-import { FlagTeam } from "src/app/Models/flag";
+import { FlagTeam } from "src/app/Models/Flag";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +13,7 @@ import { FlagTeam } from "src/app/Models/flag";
 export class TeamService {
     errorMessage!: string;
     errorHandl:any
+    flagItem:any[]=[]
 
     
     
@@ -27,9 +28,6 @@ export class TeamService {
             "access-control-allow-headers": "x-rapidapi-key, x-apisports-key, x-rapidapi-host",
             "access-control-allow-methods": "GET, OPTIONS",
             "access-control-allow-origin": "*",
-            "content-length": "14458",
-            "content-type": "application/json",
-            "date": "Sun, 04 Feb 2024 19:08:33 GMT",
             "server": "RapidAPI-1.2.8",
             "vary": "Accept-Encoding",
             "x-rapidapi-region": "AWS - eu-central-1",
@@ -41,13 +39,12 @@ export class TeamService {
         })
     }
 
-    getFlagCountries(): Observable<FlagTeam> {
+    getFlagCountries(): Observable<FlagTeam[]> {
         const httpOptions = {
             headers: this.GetHeaders(),
         };
         let flagCountries = 'https://api-football-v1.p.rapidapi.com/v3/countries';
-        return this.http.get<FlagTeam>(flagCountries, httpOptions);
-
+        return this.http.get<FlagTeam[]>(flagCountries, httpOptions);
     }
 
 }

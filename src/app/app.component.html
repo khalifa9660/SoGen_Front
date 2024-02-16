@@ -11,9 +11,12 @@
         class="display-area p-3"
         [ngClass]="{ 'display-area-shrink': sideNavStatus }"
       >
-        <p class="fs-1 fw-bold fst-italic">Main Display Area</p>
+        <p class="fs-1 fw-bold fst-italic"></p>
       </div>
-      <!-- <article><app-data-table></app-data-table></article> -->
+      <!-- <article> <app-data-grid [columnDefs]="columnDefs" [rowData]="rowData"></app-data-grid>
+      </article> -->
+     
+      <article><app-data-table></app-data-table></article>
     </main>
   </div>
 </div>
