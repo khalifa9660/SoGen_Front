@@ -19,8 +19,7 @@ interface CountryData {
 export class AppComponent implements OnInit {
   sideNavStatus: boolean = false;
   data: DataTableItem[] = [];
-  columnDefs: ColDef[] = [];
-  rowData: any[] = [];
+  columns: string[] = ['name', 'code', 'flag'];
 
 
   constructor(private renderer: Renderer2, private teamService:TeamService) {
@@ -29,6 +28,10 @@ export class AppComponent implements OnInit {
   title = "SoGeneration";
 
   ngOnInit() {
+    this.teamService.getFlagCountries().subscribe((teamData:any) =>{
+      this.data = teamData;
+      this.columns
+    })
   }
 
   ngAfterViewInit() {

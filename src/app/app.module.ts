@@ -16,6 +16,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HttpClientModule } from "@angular/common/http";
+import { DataGridModule } from "./data-grid/data-grid.component.module";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent],
@@ -31,7 +32,8 @@ import { HttpClientModule } from "@angular/common/http";
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    DataGridModule
   ],
   providers: [],
   bootstrap: [AppComponent],

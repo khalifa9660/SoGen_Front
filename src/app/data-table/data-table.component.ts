@@ -10,6 +10,7 @@ import { DataTableDataSource, DataTableItem } from "./data-table-datasource";
   styleUrls: ["./data-table.component.scss"],
 })
 export class DataTableComponent implements AfterViewInit {
+  dataSource!: DataTableDataSource
   @Input() tableData: DataTableItem[] = [];
   @Input() displayedColumns: string[] = [];
 
@@ -17,15 +18,16 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTableItem>;
-  dataSource = new DataTableDataSource();
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  ngOnInit():void{
+  ngOnInit(): void {
+    this.dataSource = new DataTableDataSource();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+    this.dataSource.data = this.tableData;
   }
+  
 }
