@@ -39,12 +39,12 @@ export class TeamService {
         })
     }
 
-    getFlagCountries(): Observable<FlagTeam[]> {
+    getFlagCountries(): Observable<any> {
         const httpOptions = {
             headers: this.GetHeaders(),
         };
         let flagCountries = 'https://api-football-v1.p.rapidapi.com/v3/countries';
-        return this.http.get<FlagTeam[]>(flagCountries, httpOptions);
+        return this.http.get<any>(flagCountries, httpOptions);
     }
 
 }
