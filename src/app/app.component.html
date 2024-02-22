@@ -12,19 +12,8 @@
         [ngClass]="{ 'display-area-shrink': sideNavStatus }"
       >
         <p class="fs-1 fw-bold fst-italic"></p>
+        <article><router-outlet></router-outlet></article>
       </div>
-      <article><app-grid></app-grid></article>
-     
-      <!-- <article><app-data-table [tableData]="data" [displayedColumns]="columns"></app-data-table></article> -->
     </main>
   </div>
 </div>
-
-<!-- <body>
-  <div class="banner">
-    <main class="content">
-      <aside class="aside"></aside>
-      <article></article>
-    </main>
-  </div>
-</body> -->

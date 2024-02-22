@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef, GridReadyEvent, ModuleRegistry } from 'ag-grid-community'; // Column Definition Type Interface
+import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, ColumnApi } from 'ag-grid-community'; // Column Definition Type Interface
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlagTeam } from '../Models/Flag';
@@ -13,9 +13,10 @@ import { TeamService } from '../services/FootballData/teamApi.service';
   styleUrls: ['./data-grid.component.scss'],
   template: `<!-- The AG Grid component -->
   <ag-grid-angular
+    #agGrid
     (gridReady)="onGridReady($event)"
     class="ag-theme-quartz"
-    style="height: 500px;"
+    style="height: 680px;"
     [class]="themeClass"
     [rowData]="rowData"
     [pagination]="true"
@@ -33,25 +34,40 @@ export class DataGridModule {
       filter: true
     }
 
-    onGridReady(params: GridReadyEvent) {
-      this.teamService.getFlagCountries().subscribe(response =>{
-          console.log(response);
-          // Assurez-vous que la réponse contient la propriété response qui est un tableau
-          if (response && Array.isArray(response.response)) {
-              this.rowData = response.response; // Assigner directement la propriété response à rowData
-          } else {
-              console.error("Impossible de récupérer les données à partir de la réponse.");
-          }
-      }, error => {
-          console.error("Une erreur s'est produite lors de la récupération des données :", error);
-      });
+  @Input() onGridReadyFn!: (params: GridReadyEvent) => void;
+  @Input() rowData: any[] = [];
+  @Input() colDefs: ColDef[] = [];
+
+  @ViewChild('agGrid') agGrid!: AgGridAngular;
+  private gridApi!: GridApi;
+  private columnApi!: ColumnApi;
+
+  onGridReady(params: GridReadyEvent) {
+    if (this.onGridReadyFn) {
+      this.onGridReadyFn(params);
+    }
   }
 
-    rowData: any[] = [];
+  ngAfterViewInit(): void {
+    this.gridApi = this.agGrid.api;
+    this.autoSizeColumns();
 
-    colDefs: ColDef[] = [
-        { field: "flag" },
-        { field: "name" },
-        { field: "code" },
-      ]
+  }
+
+  autoSizeColumns() {
+    if (this.gridApi) {
+      this.gridApi.sizeColumnsToFit();
+    }
+  }
+    // rowData: any[] = [];
+
+    // colDefs: ColDef[] = [
+    //   { headerName: 'Drapeau', field: 'flag', cellRenderer: this.imageRenderer },
+    //   { headerName: 'Nom', field: 'name' },
+    //   { headerName: 'Code', field: 'code' }
+    // ]
+
+    // imageRenderer(params: ICellRendererParams) {
+    //   return '<img src="' + params.value + '" style="max-width:100%;max-height:100%;">';
+    // }
 }

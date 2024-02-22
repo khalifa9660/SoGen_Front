@@ -17,9 +17,15 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HttpClientModule } from "@angular/common/http";
 import { DataGridModule } from "./data-grid/data-grid.component.module";
+import { PlayersComponent } from './FootData/players/players.component';
+import { TeamsComponent } from './FootData/teams/teams.component';
+import { CountriesComponent } from './FootData/countries/countries.component';
+import { RouterModule } from '@angular/router';
+import { LeaguesComponent } from "./FootData/leagues/leagues.component";
+import { HomeComponent } from "./FootData/home/home.component";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

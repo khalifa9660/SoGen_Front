@@ -42,9 +42,9 @@ app-sidenav {
   transition: width 250ms linear;
 }
 
-article {
+.display-area, article {
   position: relative;
-  top: 8rem;
+  top: 3rem;
   left: 13%;
   width: 80%;
 }
@@ -56,12 +56,12 @@ article {
 .display-area {
   position: absolute;
   left: 60px;
-  width: calc(60% - 60px);
+  width: calc(100% - 180px);
   transition: left 250ms ease-in, width 250ms ease-in;
 }
 
 .display-area-shrink {
-  width: calc(80% - 250px);
+  width: calc(100% - 180px);
   left: 250px;
 }
 

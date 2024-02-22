@@ -1,5 +1,4 @@
 import { Component, OnInit, Renderer2, OnDestroy } from "@angular/core";
-import { DataTableItem } from "./data-table/data-table-datasource";
 import { TeamService } from "./services/FootballData/teamApi.service";
 import { FlagTeam } from "./Models/Flag";
 import { ColDef } from 'ag-grid-community';
@@ -14,13 +13,9 @@ interface CountryData {
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
-  // template:'<app-data-table [tableData]="data" [displayedColumns]="columns"></app-data-table>'
 })
 export class AppComponent implements OnInit {
   sideNavStatus: boolean = false;
-  data: DataTableItem[] = [];
-  columns: string[] = ['name', 'code', 'flag'];
-
 
   constructor(private renderer: Renderer2, private teamService:TeamService) {
   }
@@ -28,10 +23,6 @@ export class AppComponent implements OnInit {
   title = "SoGeneration";
 
   ngOnInit() {
-    this.teamService.getFlagCountries().subscribe((teamData:any) =>{
-      this.data = teamData;
-      this.columns
-    })
   }
 
   ngAfterViewInit() {
