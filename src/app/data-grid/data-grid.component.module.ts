@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, ColumnApi } from 'ag-grid-community'; // Column Definition Type Interface
+import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions  } from 'ag-grid-community'; // Column Definition Type Interface
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlagTeam } from '../Models/Flag';
@@ -40,7 +40,6 @@ export class DataGridModule {
 
   @ViewChild('agGrid') agGrid!: AgGridAngular;
   private gridApi!: GridApi;
-  private columnApi!: ColumnApi;
 
   onGridReady(params: GridReadyEvent) {
     if (this.onGridReadyFn) {

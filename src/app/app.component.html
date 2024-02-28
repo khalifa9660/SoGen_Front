@@ -3,14 +3,8 @@
     <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
 
     <main>
-      <app-sidenav
-        [sideNavStatus]="sideNavStatus"
-        [ngClass]="{ 'app-side-nav-open': sideNavStatus }"
-      ></app-sidenav>
-      <div
-        class="display-area p-3"
-        [ngClass]="{ 'display-area-shrink': sideNavStatus }"
-      >
+      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
+      <div class="display-area p-3" [ngClass]="{ 'display-area-shrink': sideNavStatus }">
         <p class="fs-1 fw-bold fst-italic"></p>
         <article><router-outlet></router-outlet></article>
       </div>
