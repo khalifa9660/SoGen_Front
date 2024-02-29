@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CountriesComponent } from './FootData/countries/countries.component';
-import { TeamsComponent } from './FootData/teams/teams.component';
-import { PlayersComponent } from './FootData/players/players.component';
-import { HomeComponent } from './FootData/home/home.component';
+import { CountriesComponent } from './FootView/countries/countries.component';
+import { TeamsComponent } from './FootView/teams/teams.component';
+import { PlayersComponent } from './FootView/players/players.component';
+import { HomeComponent } from './FootView/home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   { path: 'home', component: HomeComponent },
   { path: 'joueurs', component: PlayersComponent },
   { path: 'equipes', component: TeamsComponent },
-  { path: 'nationalité', component: CountriesComponent },
+  { path: 'pays', component: CountriesComponent },
   { path: 'contact', component: ContactComponent },
 ];
 

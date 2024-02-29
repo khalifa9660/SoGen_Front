@@ -17,12 +17,12 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HttpClientModule } from "@angular/common/http";
 import { DataGridModule } from "./data-grid/data-grid.component.module";
-import { PlayersComponent } from './FootData/players/players.component';
-import { TeamsComponent } from './FootData/teams/teams.component';
-import { CountriesComponent } from './FootData/countries/countries.component';
+import { PlayersComponent } from './FootView/players/players.component';
+import { TeamsComponent } from './FootView/teams/teams.component';
+import { CountriesComponent } from './FootView/countries/countries.component';
 import { RouterModule } from '@angular/router';
-import { LeaguesComponent } from "./FootData/leagues/leagues.component";
-import { HomeComponent } from "./FootData/home/home.component";
+import { LeaguesComponent } from "./FootView/leagues/leagues.component";
+import { HomeComponent } from "./FootView/home/home.component";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent],

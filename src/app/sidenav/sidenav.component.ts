@@ -26,13 +26,8 @@ export class SidenavComponent {
     },
     {
       number: "4",
-      name: "Nationalité",
+      name: "Pays",
       icon: "bi bi-flag-fill",
-    },
-    {
-      number: "5",
-      name: "Contact",
-      icon: "bi bi-mailbox2-flag",
     },
   ];
 
