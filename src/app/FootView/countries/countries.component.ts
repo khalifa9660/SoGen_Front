@@ -23,7 +23,6 @@ export class CountriesComponent {
   rowData: any[] = [];
 
   ngOnInit(){
-    debugger
     this.CountriesServcie.GetCountriesFromApi().subscribe(response =>{
       this.rowData = response;
     })

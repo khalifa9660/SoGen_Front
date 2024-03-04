@@ -19,12 +19,7 @@ export class TeamsComponent {
     { headerName: 'Nom', field: 'name' },
     { headerName: 'Date de création', field: 'founded' },
     { headerName: "Nom d'avenue", field: 'venue_name' },
-    { headerName: 'Ville', field: 'venue_city' },
-    { headerName: 'Adresse', field: 'venue_address' },
-    { headerName: 'Pays', field: 'country' },
     { headerName: 'Capacité', field: 'venue_capacity' },
-    { headerName: 'nation', field: 'is_national' },
-
   ];
 
   rowData: any[] = [];

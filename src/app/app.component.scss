@@ -12,9 +12,10 @@
 
 main {
   display: flex;
-  position: absolute;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 110vh;
   z-index: 1;
   overflow-y: auto;
 }
@@ -42,27 +43,27 @@ app-sidenav {
   transition: width 250ms linear;
 }
 
-.display-area, article {
-  position: relative;
-  top: 2rem;
-  left: 13%;
-  width: 80%;
-}
+
 
 .app-side-nav-open {
   width: 250px;
 }
 
 .display-area {
-  position: absolute;
-  left: 60px;
-  width: calc(100% - 180px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // left: 250px;
+  // width: calc(100% - 180px);
+  width: 80%;
   transition: left 250ms ease-in, width 250ms ease-in;
 }
 
-.display-area-shrink {
-  width: calc(100% - 180px);
-  left: 85px;
+article {
+  position: relative;
+  // top: 1rem;
+  width: 70%;
 }
 
 @media screen and (max-width: 900px) {
