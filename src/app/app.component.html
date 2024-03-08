@@ -1,13 +1,21 @@
+<router-outlet></router-outlet>
 <div id="background">
-  <div class="container-fluid g-0">
-    <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
-
-    <main>
-      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
-      <div class="display-area p-3">
-        <p class="fs-1 fw-bold fst-italic"></p>
-        <article><router-outlet></router-outlet></article>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <!-- Votre formulaire de connexion ici -->
+        <form>
+          <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="username" placeholder="Entrez votre nom d'utilisateur">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+          </div>
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
       </div>
-    </main>
+    </div>
   </div>
 </div>

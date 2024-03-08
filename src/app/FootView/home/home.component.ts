@@ -7,6 +7,7 @@ import { ColDef, GridReadyEvent } from 'ag-grid-community';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  sideNavStatus: boolean = false;
   colDefs: ColDef[] = [
     { headerName: 'Flag', field: 'flag' },
     { headerName: 'Name', field: 'name' },

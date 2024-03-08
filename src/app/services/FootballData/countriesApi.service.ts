@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { FlagTeam } from "src/app/Models/Flag";
+import { environment } from "src/environments/environment";
 
 
 @Injectable({
@@ -10,6 +11,7 @@ import { FlagTeam } from "src/app/Models/Flag";
   })
 
 export class CountriesService {
+    countriesUrl = "FootBallApi/Countries"
     errorMessage!: string;
     errorHandl:any
 
@@ -25,7 +27,7 @@ export class CountriesService {
     }
 
     GetCountriesFromApi(): Observable<FlagTeam[]> {
-        let CountriesApi = "https://localhost:7171/api/ExternalApi/Countries";
+        let CountriesApi = `${environment.apiUrl}/${this.countriesUrl}`
         return this.http.get<FlagTeam[]>(CountriesApi,{headers: this.GetHeaders() })
     }
 }

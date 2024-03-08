@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, BehaviorSubject } from "rxjs";
 import { TeamModels } from "src/app/Models/team";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +24,7 @@ export class TeamService {
     }
 
     GetTeamsFromApi(leagueId:number): Observable<TeamModels[]> {
-        let TeamsApi = `https://localhost:7171/api/ExternalApi/${leagueId}`;
+        let TeamsApi = `${environment.apiUrl}/FootBallApi/${leagueId}`;
         return this.http.get<TeamModels[]>(TeamsApi,{headers: this.GetHeaders() })
     }
 

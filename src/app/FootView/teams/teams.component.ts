@@ -11,7 +11,7 @@ import { TeamModels } from 'src/app/Models/team';
   styleUrls: ['./teams.component.scss']
 })
 export class TeamsComponent {
-
+  sideNavStatus: boolean = false;
   constructor(private teamService: TeamService, private http :HttpClient, private router: Router){}
 
   colDefs: ColDef[] = [

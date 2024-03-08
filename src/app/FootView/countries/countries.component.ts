@@ -11,7 +11,7 @@ import { CountriesService } from 'src/app/services/FootballData/countriesApi.ser
 })
 
 export class CountriesComponent {
-
+  sideNavStatus: boolean = false;
   constructor(private http: HttpClient, private router: Router, private CountriesServcie: CountriesService){}
 
   colDefs: ColDef[] = [

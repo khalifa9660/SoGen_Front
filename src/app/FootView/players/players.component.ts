@@ -9,7 +9,7 @@ import { PlayerService } from 'src/app/services/FootballData/playerApi.service';
   styleUrls: ['./players.component.scss']
 })
 export class PlayersComponent {
-
+  sideNavStatus: boolean = false;
   constructor(private http: HttpClient, private router: Router, private PlayerService: PlayerService){}
 
   colDefs: ColDef[] = [

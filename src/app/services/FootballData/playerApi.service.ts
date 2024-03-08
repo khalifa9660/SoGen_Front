@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Observable, BehaviorSubject } from "rxjs";
 import { PlayerModel } from "src/app/Models/player";
 import { TeamModels } from "src/app/Models/team";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,7 @@ export class PlayerService {
     }
 
     GetPlayersFromApi(season:number, leagueId:number): Observable<PlayerModel[]> {
-        let PlayersApi = `https://localhost:7171/api/ExternalApi/${season}/${leagueId}`;
+        let PlayersApi = `${environment.apiUrl}/FootBallApi/${season}/${leagueId}`;
         return this.http.get<PlayerModel[]>(PlayersApi,{headers: this.GetHeaders() })
     }
 
