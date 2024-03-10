@@ -7,16 +7,17 @@ import { HomeComponent } from './FootView/home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { AppComponent } from './app.component';
+import { RegisterComponent } from './register/register.component';
 
  const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent },
   { path: 'joueurs', component: PlayersComponent },
   { path: 'equipes', component: TeamsComponent },
   { path: 'pays', component: CountriesComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

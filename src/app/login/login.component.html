@@ -1,20 +1,55 @@
-<div id="background">
-    <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-          <!-- Votre formulaire de connexion ici -->
-          <form>
-            <div class="mb-3">
-              <label for="username" class="form-label">Nom d'utilisateur</label>
-              <input type="text" class="form-control" id="username" placeholder="Entrez votre nom d'utilisateur">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Mot de passe</label>
-              <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
-            </div>
-            <button type="submit" class="btn btn-primary">Se connecter</button>
-          </form>
-        </div>
+<body>
+
+  <div class="background"></div>
+  <div class="container">
+    <div class="content">
+      <h2 class="logo"><i class='bx bx-football' ></i>SoGen</h2>
+      <div class="text-sci">
+        <h2>Welcome! <br><span>To our new web site.</span></h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At minima deserunt dolores corrupti nobis odio. Repellat sapiente nam iure quae! </p>
+      </div>
+
+      <div class="social-icons">
+        <a href=""><i class='bx bxl-instagram-alt' ></i></a>
+        <a href=""><i class='bx bxl-twitter' ></i></a>
+        <a href=""><i class='bx bxl-linkedin-square' ></i></a>
+        <a href=""><i class='bx bxl-facebook-square' ></i></a>
+      </div>
+
+    </div>
+
+    <div class="logreg-box">
+      <div class="form-box login">
+        <form action="#">
+          <h2>Sign In</h2>
+
+          <div class="input-box">
+            <span class="icon"><i class='bx bxs-envelope' ></i></span>
+            <input type="email" required placeholder="Email">
+          </div>
+
+          <div class="input-box">
+            <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+            <input type="password" required placeholder="Password">
+          </div>
+
+          <div class="remember-forgot">
+            <label><input type="checkbox">Remember me</label>
+            <a href="#">Forgot password ?</a>
+          </div>
+
+          <button type="submit" class="btn">
+            Sign In
+          </button>
+
+          <div class="login-register">
+            <p>Don't have an account? <a href="" class="register-link" routerLink="/register">Sign up</a></p>
+          </div>
+
+        </form>
       </div>
     </div>
+
   </div>
+</body>

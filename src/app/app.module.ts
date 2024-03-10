@@ -23,9 +23,10 @@ import { CountriesComponent } from './FootView/countries/countries.component';
 import { RouterModule } from '@angular/router';
 import { LeaguesComponent } from "./FootView/leagues/leagues.component";
 import { HomeComponent } from "./FootView/home/home.component";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
