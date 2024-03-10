@@ -1,17 +1,18 @@
-<h2 class="fw-bold">HOME</h2>
-
-
 <div id="background">
-    <div class="container-fluid g-0">
-      <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
-  
-      <main>
-        <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
-        <div class="display-area p-3">
-          <p class="fs-1 fw-bold fst-italic"></p>
-          <article><app-grid [onGridReadyFn]="onGridReady" [colDefs]="colDefs" [rowData]="rowData"></app-grid></article>
+  <div class="container-fluid g-0">
+    <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
+    <main [ngClass]="{ 'blur-background': sideNavStatus }">
+      <div  class="display-area p-3">
+        <article> 
+          <div class="text-center mt-5 mb-5">
+          <p class="fs-1 fw-bold fst-italic">HOME</p>
         </div>
-      </main>
-    </div>
+        <app-grid #agGrid [onGridReadyFn]="onGridReady" [colDefs]="colDefs" [rowData]="rowData"></app-grid>
+      </article>
+      </div>
+    </main>
   </div>
+</div>
+
   

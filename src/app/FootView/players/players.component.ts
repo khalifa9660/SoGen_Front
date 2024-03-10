@@ -13,7 +13,7 @@ export class PlayersComponent {
   constructor(private http: HttpClient, private router: Router, private PlayerService: PlayerService){}
 
   colDefs: ColDef[] = [
-    { headerName: 'Joueur', field: 'player' },
+    { headerName: 'Joueurs', field: 'player' },
     { headerName: 'Numéro', field: 'number' }
   ];
 
