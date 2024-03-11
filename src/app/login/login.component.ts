@@ -1,4 +1,8 @@
-import { Component, AfterViewInit, Renderer2, ElementRef, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Login } from "../Models/login";
+import { Register } from "../Models/register";
+import { JwtAuth } from "../Models/jwtAuth";
+import { AuthenticationService } from "../services/accountManager/authentication.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,11 +12,23 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  title = 'Drivers.App'
+  loginDto = new Login();
+  jwtDto = new JwtAuth();
+
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
 
   ngOnInit(): void {
   }
 
+  login(loginDto: Login){
+    this.authService.login(loginDto).subscribe((jwtDto) =>{
+      sessionStorage.setItem('jwtToken', jwtDto.token);
+      console.log(sessionStorage.getItem('jwtToken'))
+      this.router.navigate(['home']);
+    });
+  }
+  
 
 }

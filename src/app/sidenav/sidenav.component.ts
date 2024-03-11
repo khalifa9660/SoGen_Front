@@ -16,17 +16,17 @@ export class SidenavComponent {
     },
     {
       number: "2",
-      name: "Joueurs",
+      name: "Players",
       icon: "bi bi-person-arms-up",
     },
     {
       number: "3",
-      name: "Equipes",
+      name: "Teams",
       icon: "bi bi-microsoft-teams",
     },
     {
       number: "4",
-      name: "Pays",
+      name: "Countries",
       icon: "bi bi-flag-fill",
     },
   ];

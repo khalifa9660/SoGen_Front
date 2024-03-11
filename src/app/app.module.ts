@@ -15,7 +15,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { DataGridModule } from "./data-grid/data-grid.component.module";
 import { PlayersComponent } from './FootView/players/players.component';
 import { TeamsComponent } from './FootView/teams/teams.component';
@@ -24,6 +24,8 @@ import { RouterModule } from '@angular/router';
 import { LeaguesComponent } from "./FootView/leagues/leagues.component";
 import { HomeComponent } from "./FootView/home/home.component";
 import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
+import { AuthenticationInterceptor } from "./services/interceptor";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent, RegisterComponent],
@@ -40,9 +42,14 @@ import { RegisterComponent } from './register/register.component';
     MatListModule,
     MatIconModule,
     HttpClientModule,
-    DataGridModule
+    DataGridModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthenticationInterceptor,
+    multi: true //Able to have many request
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

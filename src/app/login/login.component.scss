@@ -91,7 +91,7 @@ nav a:hover::after{
   transform: translate(-50%, -50%);
   width: 75%;
   height: 550px;
-  background: url('../../assets/Img/5073414.png') no-repeat;
+  background: url(../../assets/Img/5073414.png) no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -244,6 +244,16 @@ nav a:hover::after{
   border-radius: 16px;
   color: #e4e4e4;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.btn:hover {
+  background: linear-gradient(to bottom, #353535, #1a1a1a);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.btn:active {
+  background: #1a1a1a;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .form-box .login-register {
