@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CountriesComponent } from './FootView/countries/countries.component';
 import { TeamsComponent } from './FootView/teams/teams.component';
 import { PlayersComponent } from './FootView/players/players.component';
-import { HomeComponent } from './FootView/home/home.component';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';

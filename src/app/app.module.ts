@@ -20,16 +20,13 @@ import { DataGridModule } from "./data-grid/data-grid.component.module";
 import { PlayersComponent } from './FootView/players/players.component';
 import { TeamsComponent } from './FootView/teams/teams.component';
 import { CountriesComponent } from './FootView/countries/countries.component';
-import { RouterModule } from '@angular/router';
-import { LeaguesComponent } from "./FootView/leagues/leagues.component";
-import { HomeComponent } from "./FootView/home/home.component";
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationInterceptor } from "./services/interceptor";
 import { NationalPlayersComponent } from './FootView/national-players/national-players.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent, RegisterComponent, NationalPlayersComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, RegisterComponent, NationalPlayersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
