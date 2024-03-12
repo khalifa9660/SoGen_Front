@@ -1,33 +1,70 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ColDef, GridReadyEvent } from 'ag-grid-community';
-import { PlayerService } from 'src/app/services/FootballData/playerApi.service';
+import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
+import { PlayerModel, TeamPlayerModel } from 'src/app/Models/player';
+import { PlayersService } from 'src/app/services/FootballData/playersApi.service';
+
+interface DataRow {
+  team: TeamPlayerModel;
+  players: PlayerModel[];
+}
+
+
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
   styleUrls: ['./players.component.scss']
 })
-export class PlayersComponent {
+export class PlayersComponent implements OnInit{
   sideNavStatus: boolean = false;
-  constructor(private http: HttpClient, private router: Router, private PlayerService: PlayerService){}
-
-  colDefs: ColDef[] = [
-    { headerName: 'Joueurs', field: 'player' },
-    { headerName: 'Numéro', field: 'number' }
-  ];
+  constructor(private http: HttpClient, private router: Router, private playerService: PlayersService){}
+  
+  teamsList: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
+  selectedteamId!: number;
 
   rowData: any[] = [];
+  
+  colDefs: ColDef[] = [
+    { headerName: 'Photo', field: 'combinedImage', cellRenderer: this.imageRenderer },
+    { headerName: 'Name', field: 'name' },
+    { headerName: 'Age', field: 'age' },
+    { headerName: 'Position', field: 'position' },
 
-  ngOnInit(){
-    const season = 2019; // Remplacez par la saison désirée
-    const leagueId = 2;
-    this.PlayerService.GetPlayersFromApi(season, leagueId).subscribe(data =>{
-      this.rowData = data
-    })
+
+  ];
+
+  ngOnInit() {
+    this.selectedteamId = this.teamsList[1]
+    this.getPlayers(this.selectedteamId);
   }
+
+  onTeamSelected(team: number) {
+    console.log("Season selected:", team);
+    this.selectedteamId = team
+    this.getPlayers(this.selectedteamId)
+  }
+
+  getPlayers(teamId: number) {
+      this.playerService.GetPlayersFromApi(teamId).subscribe(data => {
+        this.rowData = data.players;
+        this.rowData.push(data.team);
+        const lastItem = this.rowData.pop(); // Supprimer le dernier élément
+      this.rowData.unshift(lastItem);
+        this.rowData = data.players.map(player => ({
+          ...player,
+          combinedImage: player.photo ? `<img src="${player.photo}" width="40" >` : `<img src="${data.team.logo}" width="40" >`
+        }));
+      });
+  }
+
+  imageRenderer(params: ICellRendererParams) {
+    return params.value;
+  }
+
 
   onGridReady(params: GridReadyEvent) {
     console.log('Grid is ready!', params);
   }
+
 }

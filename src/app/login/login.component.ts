@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginDto).subscribe((jwtDto) =>{
       sessionStorage.setItem('jwtToken', jwtDto.token);
       console.log(sessionStorage.getItem('jwtToken'))
-      this.router.navigate(['home']);
+      this.router.navigate(['players']);
     });
   }
   

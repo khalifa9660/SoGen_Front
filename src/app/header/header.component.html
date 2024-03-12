@@ -5,28 +5,50 @@
 
   <a class="navbar-brand px-4" href="#">SOGEN</a>
 
-  <div class="navbar-collapse">
-    <!-- <ul class="navbar-nav me-auto">
+  <div class="navbar-collapse justify-content-between">
+    <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a
-          href="#"
-          class="nav-link dropdown-toggle"
-          role="button"
-          data-bs-toggle="dropdown"
-          >Menu 1</a
-        >
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="seasonList.length > 0">Seasons</a>
         <ul class="dropdown-menu dropdown-menu-dark">
-          <li><a href="" class="dropdown-item">Child 1</a></li>
-          <li><a href="" class="dropdown-item">Child 1</a></li>
-          <li><a href="" class="dropdown-item">Child 1</a></li>
+          <li>
+            <select class="dropdown-item" (change)="selectedSeason($event)">
+              <option *ngFor="let sea of seasonList" [value]="sea">{{ sea }}</option>
+            </select>
+          </li>
         </ul>
       </li>
-    </ul> -->
-  </div>
+  
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="leagueList.length > 0">Leagues</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <select class="dropdown-item" (change)="selectedLeague($event)"> 
+              <option *ngFor="let lea of leagueList" [value]="lea">{{ lea }}</option>
+            </select>
+          </li>
+        </ul>
+      </li>
+   
 
-  <form class="d-flex me-4 ml-5">
-    <button class="btn btn-outline-light" (click)="logout()" type="button">Log Out</button>
-  </form>
+    <li class="nav-item dropdown">
+      <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="teamsList.length > 0">Teams</a>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li>
+          <select class="dropdown-item" (change)="selectedTeam($event)"> 
+            <option *ngFor="let team of teamsList" [value]="team">{{ team }}</option>
+          </select>
+        </li>
+      </ul>
+    </li> 
+  </ul>
+
+  
+    <form class="d-flex me-4 ml-5">
+      <button class="btn btn-outline-light" (click)="logout()" type="button">Log Out</button>
+    </form>
+  </div>
+  
+  
 
   <li class="nav-item">
     <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">

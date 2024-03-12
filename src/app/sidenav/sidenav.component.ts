@@ -11,12 +11,12 @@ export class SidenavComponent {
   list = [
     {
       number: "1",
-      name: "Home",
+      name: "Players",
       icon: "bi bi-house-door-fill",
     },
     {
       number: "2",
-      name: "Players",
+      name: "National Players",
       icon: "bi bi-person-arms-up",
     },
     {

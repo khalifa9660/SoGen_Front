@@ -26,9 +26,10 @@ import { HomeComponent } from "./FootView/home/home.component";
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationInterceptor } from "./services/interceptor";
+import { NationalPlayersComponent } from './FootView/national-players/national-players.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, LeaguesComponent, HomeComponent, RegisterComponent, NationalPlayersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

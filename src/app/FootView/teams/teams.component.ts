@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
 import { TeamService } from 'src/app/services/FootballData/teamApi.service';
@@ -10,7 +10,7 @@ import { TeamModels } from 'src/app/Models/team';
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.scss']
 })
-export class TeamsComponent {
+export class TeamsComponent implements OnInit {
   sideNavStatus: boolean = false;
   constructor(private teamService: TeamService, private http :HttpClient, private router: Router){}
 
@@ -23,10 +23,22 @@ export class TeamsComponent {
   ];
 
   rowData: any[] = [];
+ @Input() leagueList: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
+ @Input() selectedLeague!: number;
 
 
   ngOnInit(){
-    this.teamService.GetTeamsFromApi(2).subscribe(data=>{
+    this.selectedLeague = this.leagueList[0];
+    this.getTeams(this.selectedLeague);
+  }
+
+  onLeagueSelected(league: number) {
+    this.getTeams(league);
+  }
+  
+
+  getTeams(league: number){
+    this.teamService.GetTeamsFromApi(league).subscribe(data=>{
       this.rowData = data;
     })
   }
