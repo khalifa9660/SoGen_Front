@@ -7,16 +7,20 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './guards/auth.guard.component';
-import { NationalPlayersComponent } from './FootView/national-players/national-players.component';
+import { ConfirmedSignUpComponent } from './confirmed-sign-up/confirmed-sign-up.component';
+import { HistoryTeamMembersComponent } from './FootView/history-team-members/history-team-members.component';
+import { CreatePlayerComponent } from './FootView/create-player/create-player.component';
 
  const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'registerConfirmation', component: ConfirmedSignUpComponent },
+  { path: 'history of teams', component: HistoryTeamMembersComponent, canActivate: [AuthGuard] },
   { path: 'players', component: PlayersComponent, canActivate: [AuthGuard] },
-  { path: 'national players', component: NationalPlayersComponent, canActivate: [AuthGuard] },
   { path: 'teams', component: TeamsComponent, canActivate: [AuthGuard] },
   { path: 'countries', component: CountriesComponent, canActivate: [AuthGuard] },
+  { path: 'create player', component: CreatePlayerComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

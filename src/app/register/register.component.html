@@ -33,30 +33,47 @@
   
       <div class="logreg-box">
         <div class="form-box register">
-          <form action="#">
-            <h2>Sign Up</h2>
+          <form action="#" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <h2>Registration</h2>
 
             <div class="input-box">
-                <span class="icon"><i class='bx bxs-envelope' ></i></span>
-                <input type="Name" [(ngModel)]="registerDto.name" name="Name" placeholder="Name" required>
+                <span for="name" class="icon"><i class='bx bxs-envelope' ></i></span>
+                <input type="Name" [(ngModel)]="registerDto.name" name="name" placeholder="Name" id="name" formControlName="name" required>
+                <div *ngIf="nameControl?.invalid && nameControl?.touched">
+                  <span *ngIf="nameControl?.errors?.['required']">Name is required</span>
+                  <span *ngIf="nameControl?.errors?.['pattern']">Name is invalid</span>
+                </div>
               </div>
 
               <div class="input-box">
-                <span class="icon"><i class='bx bxs-envelope' ></i></span>
-                <input type="email" [(ngModel)]="registerDto.email" name="email" placeholder="Email" required>
+                <span for="email" class="icon"><i class='bx bxs-envelope' ></i></span>
+                <input type="email" [(ngModel)]="registerDto.email" name="email" placeholder="Email" id="email" formControlName="email" required>
+                <div *ngIf="emailControl?.invalid && emailControl?.touched">
+                  <span *ngIf="emailControl?.errors?.['required']">Email is required</span>
+                  <span *ngIf="emailControl?.errors?.['email']">Email is invalid</span>
+                </div>
               </div>
   
             <div class="input-box">
-              <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
-              <input type="password" [(ngModel)]="registerDto.password" name="password" placeholder="Password" required>
+              <span for="password" class="icon"><i class='bx bxs-lock-alt' ></i></span>
+              <input type="password" [(ngModel)]="registerDto.password" name="password" placeholder="Password" id="password" formControlName="password" required>
+              <div *ngIf="passwordControl?.invalid && passwordControl?.touched">
+                <span *ngIf="passwordControl?.errors?.['required'] && !this.submitted">Password is required</span>
+                <span *ngIf="passwordControl?.errors?.['pattern']">8 characters minimum including an uppercase letter, 1 special character and 1 number</span>
+              </div>
+              <div *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+            </div>
+            
+            
+
+            <div class="remember-forgot">
+                <!-- <label><input type="checkbox">I agree to the terms & conditions</label> -->
             </div>
   
-            <!-- <div class="remember-forgot">
-                <label><input type="checkbox">I agree to the terms & conditions</label>
-            </div> -->
-  
-            <button type="submit" class="btn" (click)="register(registerDto)">
-            Sign Up
+            <button type="submit" class="btn" (click)="register(registerDto)" [disabled]="registerForm.invalid">
+            Sign up
             </button>
   
             <div class="login-register">

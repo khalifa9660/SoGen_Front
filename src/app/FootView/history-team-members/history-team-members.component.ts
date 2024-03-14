@@ -2,18 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridReadyEvent } from 'ag-grid-community';
-import { NationalPlayersService } from 'src/app/services/FootballData/nationalPlayerApi.service';
+import { Coachs } from 'src/app/Models/player';
+import { HistoryTeamMembersService } from 'src/app/services/FootballData/historyTeamMembersApi.service';
 
 @Component({
-  selector: 'app-national-players',
-  templateUrl: './national-players.component.html',
-  styleUrls: ['./national-players.component.scss']
+  selector: 'app-history-team-members',
+  templateUrl: './history-team-members.component.html',
+  styleUrls: ['./history-team-members.component.scss']
 })
-export class NationalPlayersComponent implements OnInit{
-  sideNavStatus: boolean = false;
-  constructor(private http: HttpClient, private router: Router, private nationalPlayers: NationalPlayersService){}
+export class HistoryTeamMembersComponent implements OnInit {
 
-  seasons: number[] = Array.from({length: 2022 - 2008 + 1}, (_, index) => index + 2008);
+  sideNavStatus: boolean = false;
+  constructor(private http: HttpClient, private router: Router, private historyTeamMembers: HistoryTeamMembersService){}
+
+  seasons: number[] = Array.from({length: 2022 - 2009 + 1}, (_, index) => index + 2009);
   leagues: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
   selectedLeagueId!: number;
   selectedSeason!: number;
@@ -21,8 +23,8 @@ export class NationalPlayersComponent implements OnInit{
   rowData: any[] = [];
   
   colDefs: ColDef[] = [
-    { headerName: 'Joueurs', field: 'player' },
-    { headerName: 'Numéro', field: 'number' }
+    { headerName: 'Name', field: 'combinedName' },
+    { headerName: 'Number', field: 'number' },
   ];
 
   ngOnInit() {
@@ -32,7 +34,6 @@ export class NationalPlayersComponent implements OnInit{
   }
 
   onSeasonSelected(season: number) {
-    debugger
     console.log("Season selected:", season);
     this.selectedSeason = season
     this.selectedLeagueId
@@ -48,8 +49,23 @@ export class NationalPlayersComponent implements OnInit{
   }
 
   getPlayers(season: number, league: number) {
-      this.nationalPlayers.GetNationalPlayersFromApi(season, league).subscribe(data => {
-        this.rowData = data;
+      this.historyTeamMembers.GetHistoryTeamMembersFromApi(season, league).subscribe(data => {
+        const coachs: Coachs[] = data.coachs;
+
+        this.rowData = data.players;
+        this.rowData.push(...coachs);
+
+        this.rowData.forEach(row => {
+          if (row.name == undefined) {
+            row.combinedName = `${row.player}`;
+          } else {
+            if(row.players == undefined){
+              row.combinedName = `${row.name}`
+            }
+          }
+
+        });
+    
       });
     
   }
@@ -58,5 +74,4 @@ export class NationalPlayersComponent implements OnInit{
   onGridReady(params: GridReadyEvent) {
     console.log('Grid is ready!', params);
   }
-
 }

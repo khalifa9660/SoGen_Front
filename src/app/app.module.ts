@@ -21,12 +21,14 @@ import { PlayersComponent } from './FootView/players/players.component';
 import { TeamsComponent } from './FootView/teams/teams.component';
 import { CountriesComponent } from './FootView/countries/countries.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationInterceptor } from "./services/interceptor";
-import { NationalPlayersComponent } from './FootView/national-players/national-players.component';
+import { ConfirmedSignUpComponent } from './confirmed-sign-up/confirmed-sign-up.component';
+import { HistoryTeamMembersComponent } from './FootView/history-team-members/history-team-members.component';
+import { CreatePlayerComponent } from './FootView/create-player/create-player.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, RegisterComponent, NationalPlayersComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, RegisterComponent, ConfirmedSignUpComponent, HistoryTeamMembersComponent, CreatePlayerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,7 +43,8 @@ import { NationalPlayersComponent } from './FootView/national-players/national-p
     MatIconModule,
     HttpClientModule,
     DataGridModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

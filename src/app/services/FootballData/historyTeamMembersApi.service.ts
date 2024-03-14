@@ -2,7 +2,7 @@ import { HttpClient, HttpBackend, HttpHeaders, HttpEvent } from "@angular/common
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, BehaviorSubject } from "rxjs";
-import { NationalPlayerModel, PlayerModel } from "src/app/Models/player";
+import { Coachs, NationalPlayerModel, PlayerModel } from "src/app/Models/player";
 import { TeamModels } from "src/app/Models/team";
 import { environment } from "src/environments/environment";
 
@@ -10,7 +10,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
   })
 
-export class NationalPlayersService {
+export class HistoryTeamMembersService {
     errorMessage!: string;
     errorHandl:any
     
@@ -24,9 +24,9 @@ export class NationalPlayersService {
         });
     }
 
-    GetNationalPlayersFromApi(season:number, leagueId:number): Observable<NationalPlayerModel[]> {
-        let PlayersApi = `${environment.apiUrl}/FootBallApi/NationalPlayers/${season}/${leagueId}`;
-        return this.http.get<NationalPlayerModel[]>(PlayersApi,{headers: this.GetHeaders() })
+    GetHistoryTeamMembersFromApi(season:number, leagueId:number): Observable<{ players: NationalPlayerModel[], coachs: Coachs[] }> {
+        let PlayersApi = `${environment.apiUrl}/FootBallApi/HistoryTeamMembers/${season}/${leagueId}`;
+        return this.http.get<{ players: NationalPlayerModel[], coachs: Coachs[] }>(PlayersApi,{headers: this.GetHeaders() })
     }
 
 }

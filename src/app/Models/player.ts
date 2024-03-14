@@ -20,3 +20,8 @@ export interface TeamPlayerModel {
     name: string
     logo:string
 }
+
+export interface Coachs {
+    name: string
+
+}

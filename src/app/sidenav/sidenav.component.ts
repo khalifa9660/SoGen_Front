@@ -12,22 +12,27 @@ export class SidenavComponent {
     {
       number: "1",
       name: "Players",
-      icon: "bi bi-house-door-fill",
+      icon: "bi bi-person-arms-up",
     },
     {
       number: "2",
-      name: "National Players",
-      icon: "bi bi-person-arms-up",
+      name: "History of Teams",
+      icon: "bi bi-journal",
     },
     {
       number: "3",
       name: "Teams",
-      icon: "bi bi-microsoft-teams",
+      icon: "bi bi-align-top",
     },
     {
       number: "4",
       name: "Countries",
       icon: "bi bi-flag-fill",
+    },
+    {
+      number: "5",
+      name: "Create player",
+      icon: "bi bi-plus-circle",
     },
   ];
 

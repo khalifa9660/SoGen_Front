@@ -30,8 +30,6 @@ export class PlayersComponent implements OnInit{
     { headerName: 'Name', field: 'name' },
     { headerName: 'Age', field: 'age' },
     { headerName: 'Position', field: 'position' },
-
-
   ];
 
   ngOnInit() {
@@ -49,7 +47,7 @@ export class PlayersComponent implements OnInit{
       this.playerService.GetPlayersFromApi(teamId).subscribe(data => {
         this.rowData = data.players;
         this.rowData.push(data.team);
-        const lastItem = this.rowData.pop(); // Supprimer le dernier élément
+        const lastItem = this.rowData.pop();
       this.rowData.unshift(lastItem);
         this.rowData = data.players.map(player => ({
           ...player,
