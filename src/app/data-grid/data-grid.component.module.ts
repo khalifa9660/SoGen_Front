@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions  } from 'ag-grid-community'; // Column Definition Type Interface
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlagTeam } from '../Models/Flag';
 import { TeamService } from '../services/FootballData/teamApi.service';
@@ -9,7 +9,7 @@ import { TeamService } from '../services/FootballData/teamApi.service';
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [AgGridAngular], // Add AG Grid component
+  imports: [AgGridAngular, HttpClientModule], // Add AG Grid component
   styleUrls: ['./data-grid.component.scss'],
   template: `<!-- The AG Grid component -->
   <ag-grid-angular
@@ -21,7 +21,7 @@ import { TeamService } from '../services/FootballData/teamApi.service';
     [rowData]="rowData"
     [pagination]="true"
     [defaultColDef]="defaultColDef"
-    [columnDefs]="colDefs">
+    [columnDefs]="columnDefs">
   </ag-grid-angular>`
 })
 
@@ -30,13 +30,10 @@ export class DataGridModule {
   themeClass =
     "ag-theme-quartz";
 
-    defaultColDef: ColDef = {
-      filter: true
-    }
-
   @Input() onGridReadyFn!: (params: GridReadyEvent) => void;
   @Input() rowData: any[] = [];
-  @Input() colDefs: ColDef[] = [];
+  @Input() columnDefs: ColDef[] = [];
+  @Input() defaultColDef: ColDef ={};
 
   @ViewChild('agGrid') agGrid!: AgGridAngular;
   private gridApi!: GridApi;

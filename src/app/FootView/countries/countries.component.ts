@@ -14,13 +14,18 @@ export class CountriesComponent {
   sideNavStatus: boolean = false;
   constructor(private http: HttpClient, private router: Router, private CountriesServcie: CountriesService){}
 
-  colDefs: ColDef[] = [
-    { headerName: 'Drapeau', field: 'flag', cellRenderer: this.imageRenderer },
-    { headerName: 'Nom', field: 'name' },
+  columnDefs: ColDef[] = [
+    { headerName: 'Flag', field: 'flag', cellRenderer: this.imageRenderer, rowDrag: true },
+    { headerName: 'Name', field: 'name' },
     { headerName: 'Code', field: 'code' }
   ];
 
   rowData: any[] = [];
+
+  defaultColDef: ColDef = {
+    filter: true,
+    floatingFilter: true,
+  }
 
   ngOnInit(){
     this.CountriesServcie.GetCountriesFromApi().subscribe(response =>{
@@ -29,7 +34,7 @@ export class CountriesComponent {
   }
 
   imageRenderer(params: ICellRendererParams) {
-      return '<img src="' + params.value + '" style="max-width:100%;max-height:100%;">';
+      return '<img src="' + params.value + '" style="width:50px;">';
     }
 
   onGridReady(params: GridReadyEvent) {

@@ -22,10 +22,15 @@ export class HistoryTeamMembersComponent implements OnInit {
 
   rowData: any[] = [];
   
-  colDefs: ColDef[] = [
-    { headerName: 'Name', field: 'combinedName' },
+  columnDefs: ColDef[] = [
+    { headerName: 'Name', field: 'combinedName', rowDrag: true },
     { headerName: 'Number', field: 'number' },
   ];
+
+  defaultColDef: ColDef = {
+    filter: true,
+    floatingFilter: true,
+  }
 
   ngOnInit() {
     this.selectedSeason = this.seasons[12];

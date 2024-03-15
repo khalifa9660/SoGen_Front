@@ -24,9 +24,14 @@ export class PlayersComponent implements OnInit{
   selectedteamId!: number;
 
   rowData: any[] = [];
+
+  defaultColDef: ColDef = {
+    filter: true,
+    floatingFilter: true,
+  }
   
-  colDefs: ColDef[] = [
-    { headerName: 'Photo', field: 'combinedImage', cellRenderer: this.imageRenderer },
+  columnDefs: ColDef[] = [
+    { headerName: 'Photo', field: 'combinedImage', cellRenderer: this.imageRenderer, rowDrag: true },
     { headerName: 'Name', field: 'name' },
     { headerName: 'Age', field: 'age' },
     { headerName: 'Position', field: 'position' },
