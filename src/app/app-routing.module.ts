@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard.component';
 import { ConfirmedSignUpComponent } from './confirmed-sign-up/confirmed-sign-up.component';
 import { HistoryTeamMembersComponent } from './FootView/history-team-members/history-team-members.component';
 import { CreatePlayerComponent } from './FootView/create-player/create-player.component';
+import { AddPlayerComponent } from './FootView/add-player/add-player.component'; 
 
  const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,7 +21,9 @@ import { CreatePlayerComponent } from './FootView/create-player/create-player.co
   { path: 'players', component: PlayersComponent, canActivate: [AuthGuard] },
   { path: 'teams', component: TeamsComponent, canActivate: [AuthGuard] },
   { path: 'countries', component: CountriesComponent, canActivate: [AuthGuard] },
-  { path: 'create player', component: CreatePlayerComponent, canActivate: [AuthGuard] },
+  { path: 'dream team', component: CreatePlayerComponent, canActivate: [AuthGuard] },
+  { path: 'AddPlayer', component: AddPlayerComponent, canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({

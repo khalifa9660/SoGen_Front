@@ -11,8 +11,17 @@ export interface PlayerModel {
     position: string;
     photo: string;
     TeamPlayerModels: TeamPlayerModel[]
-
 }
+
+export class CreatePlayerModel {
+    id: number = 0
+    name: string = '';
+    age: number = 0;
+    position: string = '';
+    number: number= 0;
+    photo: string= ''
+  }
+
 
 export interface TeamPlayerModel {
     map(arg0: (player: any) => any): any[];

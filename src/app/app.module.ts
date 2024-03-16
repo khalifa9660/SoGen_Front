@@ -26,9 +26,10 @@ import { AuthenticationInterceptor } from "./services/interceptor";
 import { ConfirmedSignUpComponent } from './confirmed-sign-up/confirmed-sign-up.component';
 import { HistoryTeamMembersComponent } from './FootView/history-team-members/history-team-members.component';
 import { CreatePlayerComponent } from './FootView/create-player/create-player.component';
+import { AddPlayerComponent } from './FootView/add-player/add-player.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, RegisterComponent, ConfirmedSignUpComponent, HistoryTeamMembersComponent, CreatePlayerComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, RegisterComponent, ConfirmedSignUpComponent, HistoryTeamMembersComponent, CreatePlayerComponent, AddPlayerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

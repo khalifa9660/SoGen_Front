@@ -1,10 +1,11 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions  } from 'ag-grid-community'; // Column Definition Type Interface
+import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, IsRowSelectable, IRowNode  } from 'ag-grid-community'; // Column Definition Type Interface
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlagTeam } from '../Models/Flag';
 import { TeamService } from '../services/FootballData/teamApi.service';
+import { PlayerModel } from '../Models/player';
 
 @Component({
   selector: 'app-grid',
@@ -16,6 +17,9 @@ import { TeamService } from '../services/FootballData/teamApi.service';
     #agGrid
     (gridReady)="onGridReady($event)"
     class="ag-theme-quartz"
+    [rowSelection]="rowSelection"
+    [suppressRowClickSelection]="true"
+    [isRowSelectable]="isRowSelectable"
     style="height: 680px;"
     [class]="themeClass"
     [rowData]="rowData"
@@ -37,6 +41,13 @@ export class DataGridModule {
 
   @ViewChild('agGrid') agGrid!: AgGridAngular;
   private gridApi!: GridApi;
+  public rowSelection: 'single' | 'multiple' = 'multiple';
+
+  public isRowSelectable: IsRowSelectable = (
+    params: IRowNode<PlayerModel>
+  ) => {
+    return !!params.data && params.data.age == 10;
+  };
 
   onGridReady(params: GridReadyEvent) {
     if (this.onGridReadyFn) {
@@ -55,15 +66,4 @@ export class DataGridModule {
       this.gridApi.sizeColumnsToFit();
     }
   }
-    // rowData: any[] = [];
-
-    // colDefs: ColDef[] = [
-    //   { headerName: 'Drapeau', field: 'flag', cellRenderer: this.imageRenderer },
-    //   { headerName: 'Nom', field: 'name' },
-    //   { headerName: 'Code', field: 'code' }
-    // ]
-
-    // imageRenderer(params: ICellRendererParams) {
-    //   return '<img src="' + params.value + '" style="max-width:100%;max-height:100%;">';
-    // }
 }

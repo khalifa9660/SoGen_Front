@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthenticationService, private router: Router, private FormBuilder: FormBuilder) { }
 
   loginForm!:FormGroup
+  errorMessage: string = '';
+
 
 
   ngOnInit(): void {
@@ -30,11 +32,17 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login(loginDto: Login){
-    this.authService.login(loginDto).subscribe((jwtDto) =>{
-      sessionStorage.setItem('jwtToken', jwtDto.token);
-      console.log(sessionStorage.getItem('jwtToken'))
-      this.router.navigate(['players']);
+  login(loginDto: Login) {
+    this.authService.login(loginDto).subscribe({
+      next: (jwtDto) => {
+        sessionStorage.setItem('jwtToken', jwtDto.token);
+        this.router.navigate(['players']);
+      },
+      error: (error) => {
+        console.error('Erreur lors de la connexion :', error);
+        // Gérer l'erreur ici, par exemple afficher un message d'erreur
+        this.errorMessage = "Invalid authentication";
+      }
     });
   }
 

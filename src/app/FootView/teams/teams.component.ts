@@ -19,7 +19,7 @@ export class TeamsComponent implements OnInit {
   rowData: any[] = [];
 
   columnDefs: ColDef[] = [
-    { headerName: 'Logo', field: 'logo', cellRenderer: this.imageRenderer, rowDrag: true },
+    { headerName: 'Logo', field: 'logo', cellRenderer: this.imageRenderer},
     { headerName: 'Nom', field: 'name' },
     { headerName: 'Date de création', field: 'founded' },
     { headerName: "Nom d'avenue", field: 'venue_name' },

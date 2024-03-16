@@ -34,8 +34,7 @@ export class RegisterComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erreur lors de l\'inscription :', error);
-        this.errorMessage = "Votre compte existe déjà";
-
+        this.errorMessage = "Invalid registration";
       }
     });
   }

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
 import { CreatePlayerModel } from 'src/app/Models/createPlayer';
+import { CreatePlayerService } from 'src/app/services/FootballData/createPlayer.services';
 
 @Component({
   selector: 'app-create-player',
@@ -12,13 +13,14 @@ import { CreatePlayerModel } from 'src/app/Models/createPlayer';
 export class CreatePlayerComponent {
 
   sideNavStatus: boolean = false;
-  private gridApi!: GridApi<CreatePlayerModel>;
-  constructor(private http: HttpClient, private router: Router, ){}
+  // private gridApi!: GridApi<CreatePlayerModel>;
+  constructor(private http: HttpClient, private router: Router, private createPlayer: CreatePlayerService ){}
 
   rowData: any[] = [];
   
   columnDefs: ColDef[] = [
-    { headerName: 'Photo', field: 'Photo', cellRenderer: this.imageRenderer, rowDrag: true },
+    { headerName: 'Checkbox Cell', field: 'boolean', cellEditor: 'agCheckboxCellEditor', cellRenderer: 'agCheckboxCellRenderer'},
+    { headerName: 'Photo', field: 'photo', cellRenderer: this.imageRenderer },
     { headerName: 'Name', field: 'name' },
     { headerName: 'Age', field: 'age' },
     { headerName: 'Position', field: 'position' },
@@ -29,15 +31,16 @@ export class CreatePlayerComponent {
       filter: true,
       floatingFilter: true,
       editable: true,
-      checkboxSelection: true,
     }
 
   ngOnInit() {
+    this.createPlayer.GetAllPlayerFromApi().subscribe(data =>{
+      this.rowData = data
+    })
   }
 
-  addEmptyRow() {
-    this.rowData.push({});
-    this.gridApi.refreshCells();
+  addPlayer() {
+    this.router.navigate(['/AddPlayer'])
   }
 
   // deleteSelectedRows() {
@@ -59,10 +62,11 @@ export class CreatePlayerComponent {
   // }
 
   imageRenderer(params: ICellRendererParams) {
-    return '<img src="' + params.value + '" style="max-width:100%;max-height:100%;">';
+    return '<img src="' + params.value + '" style="width:60px">';
   }
 
   onGridReady(params: GridReadyEvent) {
     console.log('Grid is ready!', params);
   }
+  
 }

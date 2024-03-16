@@ -15,7 +15,7 @@ export class CountriesComponent {
   constructor(private http: HttpClient, private router: Router, private CountriesServcie: CountriesService){}
 
   columnDefs: ColDef[] = [
-    { headerName: 'Flag', field: 'flag', cellRenderer: this.imageRenderer, rowDrag: true },
+    { headerName: 'Flag', field: 'flag', cellRenderer: this.imageRenderer },
     { headerName: 'Name', field: 'name' },
     { headerName: 'Code', field: 'code' }
   ];

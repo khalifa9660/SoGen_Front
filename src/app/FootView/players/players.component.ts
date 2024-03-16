@@ -31,7 +31,7 @@ export class PlayersComponent implements OnInit{
   }
   
   columnDefs: ColDef[] = [
-    { headerName: 'Photo', field: 'combinedImage', cellRenderer: this.imageRenderer, rowDrag: true },
+    { headerName: 'Photo', field: 'combinedImage', cellRenderer: this.imageRenderer },
     { headerName: 'Name', field: 'name' },
     { headerName: 'Age', field: 'age' },
     { headerName: 'Position', field: 'position' },

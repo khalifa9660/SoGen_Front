@@ -31,7 +31,7 @@ export class SidenavComponent {
     },
     {
       number: "5",
-      name: "Create player",
+      name: "Dream Team",
       icon: "bi bi-plus-circle",
     },
   ];

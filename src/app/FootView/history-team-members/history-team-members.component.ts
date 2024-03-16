@@ -23,7 +23,7 @@ export class HistoryTeamMembersComponent implements OnInit {
   rowData: any[] = [];
   
   columnDefs: ColDef[] = [
-    { headerName: 'Name', field: 'combinedName', rowDrag: true },
+    { headerName: 'Name', field: 'combinedName' },
     { headerName: 'Number', field: 'number' },
   ];
 
