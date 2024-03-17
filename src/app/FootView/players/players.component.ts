@@ -22,6 +22,8 @@ export class PlayersComponent implements OnInit{
   
   teamsList: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
   selectedteamId!: number;
+  gridReadyParams!: GridReadyEvent;
+
 
   rowData: any[] = [];
 
@@ -66,8 +68,8 @@ export class PlayersComponent implements OnInit{
   }
 
 
-  onGridReady(params: GridReadyEvent) {
-    console.log('Grid is ready!', params);
+  passGridReadyParams(params: GridReadyEvent) {
+    this.gridReadyParams = params;
   }
 
 }

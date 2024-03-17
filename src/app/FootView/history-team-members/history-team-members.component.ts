@@ -19,6 +19,7 @@ export class HistoryTeamMembersComponent implements OnInit {
   leagues: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
   selectedLeagueId!: number;
   selectedSeason!: number;
+  gridReadyParams!: GridReadyEvent;
 
   rowData: any[] = [];
   
@@ -76,7 +77,7 @@ export class HistoryTeamMembersComponent implements OnInit {
   }
 
 
-  onGridReady(params: GridReadyEvent) {
-    console.log('Grid is ready!', params);
+  passGridReadyParams(params: GridReadyEvent) {
+    this.gridReadyParams = params;
   }
 }

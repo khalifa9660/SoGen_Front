@@ -13,6 +13,8 @@ import { TeamModels } from 'src/app/Models/team';
 })
 export class TeamsComponent implements OnInit {
   sideNavStatus: boolean = false;
+  gridReadyParams!: GridReadyEvent;
+
 
   constructor(private teamService: TeamService, private http :HttpClient, private router: Router){}
 
@@ -57,7 +59,7 @@ export class TeamsComponent implements OnInit {
   }
 
 
-  onGridReady(params: GridReadyEvent) {
-    console.log('Grid is ready!', params);
+  passGridReadyParams(params: GridReadyEvent) {
+    this.gridReadyParams = params;
   }
 }

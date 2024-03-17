@@ -12,6 +12,7 @@ import { CountriesService } from 'src/app/services/FootballData/countriesApi.ser
 
 export class CountriesComponent {
   sideNavStatus: boolean = false;
+  gridReadyParams!: GridReadyEvent;
   constructor(private http: HttpClient, private router: Router, private CountriesServcie: CountriesService){}
 
   columnDefs: ColDef[] = [
@@ -37,8 +38,8 @@ export class CountriesComponent {
       return '<img src="' + params.value + '" style="width:50px;">';
     }
 
-  onGridReady(params: GridReadyEvent) {
-    console.log('Grid is ready!', params);
-  }
+    passGridReadyParams(params: GridReadyEvent) {
+      this.gridReadyParams = params;
+    }
 
 }

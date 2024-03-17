@@ -40,7 +40,7 @@ export class AddPlayerComponent implements OnInit {
     if (this.addPlayerForm.valid) {
       const player = this.addPlayerForm.value; // Récupérer les données du formulaire
       this.createPlayer.AddPlayer(player).subscribe({
-        next: (value: JwtAuth) => {
+        next: (value: CreatePlayerModel) => {
           console.log('Player added successfully', value);
           this.router.navigate(['/dream team']);
         },
