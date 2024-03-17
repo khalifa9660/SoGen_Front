@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ColDef, GridApi, GridReadyEvent, ICellRendererParams, ValueGetterParams, ValueSetterParams, CellValueChangedEvent, IRowNode } from 'ag-grid-community';
+import { ColDef, GridReadyEvent, ICellRendererParams, ValueGetterParams, ValueSetterParams, IRowNode, GridApi } from 'ag-grid-community';
 import { CreatePlayerClass, CreatePlayerModel } from 'src/app/Models/createPlayer';
 import { CreatePlayerService } from 'src/app/services/FootballData/createPlayer.services';
 
@@ -13,12 +13,11 @@ import { CreatePlayerService } from 'src/app/services/FootballData/createPlayer.
 export class CreatePlayerComponent {
 
   sideNavStatus: boolean = false;
-  gridApi!: GridApi<CreatePlayerModel>;
-  gridReadyParams!: GridReadyEvent;
   isDataChanged: boolean =false
-  
+  gridApi!: GridApi;
   errorMessage!: string;
   isCellValueChanged: boolean = false;
+  rowToDelete!: any[];
   
   constructor(private http: HttpClient, private router: Router, private createPlayerService: CreatePlayerService ){
   }
@@ -26,6 +25,8 @@ export class CreatePlayerComponent {
   rowData: any[] = [];
   player = new CreatePlayerClass();
   @Input() data: any;
+  @Output() selectionChanged = new EventEmitter<any[]>();
+  
   public rowSelection: 'single' | 'multiple' = 'multiple';
 
   
@@ -133,14 +134,11 @@ export class CreatePlayerComponent {
   }
 
   OnDataChanged( data: any) {
-    console.log(data)
     this.player.id = data.id
     }
   
   updatePlayer(event: CreatePlayerClass) {
-    this.OnDataChanged(event);
-    console.log(this.player, "playerData");
-  
+    this.OnDataChanged(event);  
     // Trouver le joueur à mettre à jour dans rowData
     const playerToUpdate = this.rowData.find(data => data.id === event.id);
   
@@ -172,22 +170,29 @@ export class CreatePlayerComponent {
     }
   }
 
+  receiveSelectedRows(selectedRows: any[]) {
+    this.rowToDelete = selectedRows
+  }
 
-  //   deleteSelectedRows(event: CreatePlayerClass) {
-  //     debugger
-  //     if(this.player.id != null){
-  //       this.createPlayerService.DeletePlayer(this.player.id).subscribe({
-  //         next: (response) =>{
-  //           console.log("Success Delete");
-  //           this.errorMessage = "Success delete"
-  //         }, error: (error) =>{
-  //           console.log("Invalid Saved !" + error);
-  //           this.errorMessage = "Failed to save !";
-  //         }
-  //       })
-  //     }
-  //   this.gridApi.refreshCells();
-  // }
+
+  deleteSelectedRows(selectedRows: any[]) {
+    const ids = selectedRows.filter(row => row.id != null).map(row => row.id);
+  
+    if (ids.length > 0) {
+      this.createPlayerService.DeletePlayers(ids).subscribe({
+        next: (response) => {
+          console.log("Success Delete");
+          this.errorMessage = "Success delete";
+          // Rafraîchir la grille après la suppression des lignes
+          window.location.reload();
+        },
+        error: (error) => {
+          console.log("Failed to delete!" + error);
+          this.errorMessage = "Failed to delete!";
+        }
+      });
+    }
+  }
   
 
   imageRenderer(params: ICellRendererParams) {
@@ -195,7 +200,7 @@ export class CreatePlayerComponent {
   }
 
   passGridReadyParams(params: GridReadyEvent) {
-    this.gridReadyParams = params;
+    this.gridApi = params.api;
   }
 
   onGridDataChange(event: any[]) {

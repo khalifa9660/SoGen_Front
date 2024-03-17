@@ -34,14 +34,11 @@ export class AddPlayerComponent implements OnInit {
   }
 
   savePlayer() {
-    // Mettez ici votre logique pour enregistrer le joueur
-    console.log('Player saved:', this.addPlayerForm.value);
-  
+    // Mettez ici votre logique pour enregistrer le joueur  
     if (this.addPlayerForm.valid) {
       const player = this.addPlayerForm.value; // Récupérer les données du formulaire
       this.createPlayer.AddPlayer(player).subscribe({
         next: (value: CreatePlayerModel) => {
-          console.log('Player added successfully', value);
           this.router.navigate(['/dream team']);
         },
         error: (error: any) => {

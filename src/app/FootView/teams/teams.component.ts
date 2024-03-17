@@ -55,7 +55,7 @@ export class TeamsComponent implements OnInit {
   }
 
   imageRenderer(params: ICellRendererParams) {
-    return '<img src="' + params.value + '" style="width:60px">';
+    return '<img src="' + params.value + '" style="width:38px">';
   }
 
 

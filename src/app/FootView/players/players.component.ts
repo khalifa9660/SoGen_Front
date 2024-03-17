@@ -45,7 +45,6 @@ export class PlayersComponent implements OnInit{
   }
 
   onTeamSelected(team: number) {
-    console.log("Season selected:", team);
     this.selectedteamId = team
     this.getPlayers(this.selectedteamId)
   }

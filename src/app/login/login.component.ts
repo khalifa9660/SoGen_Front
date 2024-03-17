@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.loginForm.valid) {
-      console.log("Form submitted successfully!");
+      ("Form submitted successfully!");
       
       this.loginForm.reset();
     } else {

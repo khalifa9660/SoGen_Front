@@ -41,10 +41,11 @@ export class CreatePlayerService {
         return this.http.put<CreatePlayerClass>(UpdatePlayerApi, player, {headers: this.GetHeaders() })
     }
 
-    DeletePlayer(id: string): Observable<any> {
-        const deletePlayerApi = `${environment.apiUrl}/Player/Delete/${id}`;
-        return this.http.delete(deletePlayerApi, { headers: this.GetHeaders() });
-      }
+    DeletePlayers(ids: string[]): Observable<any> {
+        const deletePlayersApi = `${environment.apiUrl}/Player/Delete/${ids.join(',')}`;
+        return this.http.delete<any>(deletePlayersApi, { headers: this.GetHeaders() });
+      }      
+      
       
       
 

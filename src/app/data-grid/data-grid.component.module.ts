@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, IsRowSelectable, IRowNode, CellValueChangedEvent  } from 'ag-grid-community'; // Column Definition Type Interface
+import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, IsRowSelectable, IRowNode, CellValueChangedEvent, SelectionChangedEvent  } from 'ag-grid-community'; // Column Definition Type Interface
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlagTeam } from '../Models/Flag';
@@ -20,6 +20,7 @@ import { PlayerModel } from '../Models/player';
     [rowSelection]="rowSelection"
     [suppressRowClickSelection]="true"
     (cellValueChanged)="onCellValueChanged($event)"
+    (selectionChanged)="handleSelectionChanged($event)"
     (dataChanged)="createComponent.data = $event"
     (selectedRows)="createComponent.data = $event"
     style="height: 680px;"
@@ -37,19 +38,19 @@ import { PlayerModel } from '../Models/player';
 export class DataGridModule {
 createComponent: any;
   constructor(private http: HttpClient, private router: Router, private teamService:TeamService ){}
-  themeClass =
-    "ag-theme-quartz";
+ 
+  themeClass = "ag-theme-quartz";
 
-  @Input() gridReadyParams!: GridReadyEvent;
+  @Input() gridReadyParams!: GridReadyEvent<any, any>;
   @Input() rowData: any[] = [];
   @Input() columnDefs: ColDef[] = [];
   @Input() defaultColDef: ColDef ={};
   @Output() dataChanged = new EventEmitter<any>();
-
+  @Output() selectionChanged = new EventEmitter<any[]>();
 
   @ViewChild('agGrid') agGrid!: AgGridAngular;
 
-  private gridApi!: GridApi<any>;
+  private gridApi!: any;
   public rowSelection: 'single' | 'multiple' = 'multiple';
   selectedRowData!: any[];
   valueChanged: boolean = false
@@ -61,11 +62,15 @@ createComponent: any;
   };
 
   onGridReady(params: GridReadyEvent) {
-    this.gridReadyParams = params;
+    this.gridApi = params.api
+  }
+
+  handleSelectionChanged(event: SelectionChangedEvent<any, any>) {
+    const selectedRowData = event.api.getSelectedNodes().map(node => node.data);
+    this.selectionChanged.emit(selectedRowData);
   }
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    console.log('Data after change is', event.data);
     this.dataChanged.emit(event.data);
   }
 

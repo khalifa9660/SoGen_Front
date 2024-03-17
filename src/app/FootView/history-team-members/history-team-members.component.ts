@@ -40,15 +40,12 @@ export class HistoryTeamMembersComponent implements OnInit {
   }
 
   onSeasonSelected(season: number) {
-    console.log("Season selected:", season);
     this.selectedSeason = season
     this.selectedLeagueId
     this.getPlayers(this.selectedSeason, this.selectedLeagueId)
   }
 
   onLeagueSelected(league: number) {
-    debugger
-    console.log("League selected:", league);
     this.selectedSeason
     this.selectedLeagueId = league;
     this.getPlayers(this.selectedSeason, this.selectedLeagueId)
