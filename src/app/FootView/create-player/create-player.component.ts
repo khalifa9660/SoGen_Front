@@ -114,8 +114,6 @@ export class CreatePlayerComponent {
   },
   ];
 
-  modifiedPlayerIds = new Set<string>();
-
   defaultColDef: ColDef = {
       filter: true,
       floatingFilter: true,
@@ -139,18 +137,14 @@ export class CreatePlayerComponent {
   
   updatePlayer(event: CreatePlayerClass) {
     this.OnDataChanged(event);  
-    // Trouver le joueur à mettre à jour dans rowData
     const playerToUpdate = this.rowData.find(data => data.id === event.id);
   
-    // Vérifier si le joueur à mettre à jour existe
     if (playerToUpdate) {
-      // Mettre à jour les propriétés du joueur
       playerToUpdate.age = event.age;
       playerToUpdate.name = event.name;
       playerToUpdate.number = event.number;
       playerToUpdate.photo = event.photo;
   
-      // Appeler le service pour éditer le joueur
       this.createPlayerService.EditPlayer(playerToUpdate).subscribe({
         next: (response) => {
           if (response) {
