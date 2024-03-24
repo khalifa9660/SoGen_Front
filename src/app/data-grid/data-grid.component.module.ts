@@ -3,8 +3,6 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, IsRowSelectable, IRowNode, CellValueChangedEvent, SelectionChangedEvent  } from 'ag-grid-community'; // Column Definition Type Interface
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FlagTeam } from '../Models/Flag';
-import { TeamService } from '../services/FootballData/teamApi.service';
 import { PlayerModel } from '../Models/player';
 
 @Component({
@@ -37,7 +35,7 @@ import { PlayerModel } from '../Models/player';
 
 export class DataGridModule {
 createComponent: any;
-  constructor(private http: HttpClient, private router: Router, private teamService:TeamService ){}
+  constructor(private http: HttpClient, private router: Router ){}
  
   themeClass = "ag-theme-quartz";
 

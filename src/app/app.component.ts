@@ -1,5 +1,4 @@
 import { Component, OnInit, Renderer2, OnDestroy } from "@angular/core";
-import { TeamService } from "./services/FootballData/teamApi.service";
 
 @Component({
   selector: "app-root",

@@ -18,7 +18,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { DataGridModule } from "./data-grid/data-grid.component.module";
 import { PlayersComponent } from './FootView/players/players.component';
-import { TeamsComponent } from './FootView/teams/teams.component';
 import { CountriesComponent } from './FootView/countries/countries.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,9 +26,10 @@ import { ConfirmedSignUpComponent } from './confirmed-sign-up/confirmed-sign-up.
 import { HistoryTeamMembersComponent } from './FootView/history-team-members/history-team-members.component';
 import { CreatePlayerComponent } from './FootView/create-player/create-player.component';
 import { AddPlayerComponent } from './FootView/add-player/add-player.component';
+import { LeaguesComponent } from './FootView/leagues/leagues.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, TeamsComponent, CountriesComponent, RegisterComponent, ConfirmedSignUpComponent, HistoryTeamMembersComponent, CreatePlayerComponent, AddPlayerComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, HeaderComponent, SidenavComponent, PlayersComponent, CountriesComponent, RegisterComponent, ConfirmedSignUpComponent, HistoryTeamMembersComponent, CreatePlayerComponent, AddPlayerComponent, LeaguesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

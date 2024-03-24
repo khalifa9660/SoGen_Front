@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthActionService } from "../services/AuthService/authService";
 import { TokenStorageService } from "../services/token/token.service";
+import { teamsName } from "../Models/teamsName";
 
 @Component({
   selector: "app-header",
@@ -14,15 +15,37 @@ export class HeaderComponent {
   
   constructor(private router: Router, private authActionService: AuthActionService, private tokenService: TokenStorageService ) {}
 
+  // Seasons
   @Input() selectedSeasonId!: number;
   @Input() seasonList: number[] = [];
-  @Input() selectedLeagueId!: number;
-  @Input() leagueList: number[] = [];
-  @Input() selectedTeamId!: number;
-  @Input() teamsList: number[] = [];
-
   @Output() seasonSelected = new EventEmitter<number>();
+
+  // Leagues
+  @Input() selectedLeagueId!: number;
+  @Input() leagueList: teamsName[] = [];
   @Output() leagueSelected = new EventEmitter<number>();
+
+  // National Teams
+  @Input() selectedTeamId!: number;
+  @Input() nationalTeamList: teamsName[] = [];
+
+  // premier league
+  @Input() premierLeagueList: teamsName[] = [];
+
+  // ligue 1
+  @Input() ligue1List: teamsName[] = [];
+
+  // Liga
+  @Input() laligaList: teamsName[] = [];
+
+  // Serie A
+  @Input() seriaAList: teamsName[] = [];
+
+  // Bundesliga
+  @Input() bundesligaList: teamsName[] = []; 
+
+
+
   @Output() teamSelected = new EventEmitter<number>();
 
   

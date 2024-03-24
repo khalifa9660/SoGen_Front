@@ -1,22 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ColDef, GridOptions, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
-import { TeamService } from 'src/app/services/FootballData/teamApi.service';
-import { TeamModels } from 'src/app/Models/team';
-
+import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
+import { teamsName } from 'src/app/Models/teamsName';
+import { leaguesNameService } from 'src/app/services/ApiService/leaguesName.service';
+import { LeagueService } from 'src/app/services/FootballData/leaguesApi.service';
 
 @Component({
-  selector: 'app-teams',
-  templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.scss']
+  selector: 'app-leagues',
+  templateUrl: './leagues.component.html',
+  styleUrls: ['./leagues.component.scss']
 })
-export class TeamsComponent implements OnInit {
+export class LeaguesComponent {
   sideNavStatus: boolean = false;
   gridReadyParams!: GridReadyEvent;
 
 
-  constructor(private teamService: TeamService, private http :HttpClient, private router: Router){}
+  constructor(private LeagueService: LeagueService, private http :HttpClient, private router: Router, private leagueNameService: leaguesNameService){}
 
   rowData: any[] = [];
 
@@ -34,12 +34,13 @@ export class TeamsComponent implements OnInit {
   }
 
  
- @Input() leagueList: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
- @Input() selectedLeague!: number;
+ leagueList: teamsName[] = []
+ selectedLeague!: number;
 
 
   ngOnInit(){
-    this.selectedLeague = this.leagueList[0];
+    this.leagueList = this.leagueNameService.getLeagues();
+    this.selectedLeague = this.leagueList[0].id
     this.getTeams(this.selectedLeague);
   }
 
@@ -49,7 +50,7 @@ export class TeamsComponent implements OnInit {
   
 
   getTeams(league: number){
-    this.teamService.GetTeamsFromApi(league).subscribe(data=>{
+    this.LeagueService.GetLeaguesFromApi(league).subscribe(data=>{
       this.rowData = data;
     })
   }

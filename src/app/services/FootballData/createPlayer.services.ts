@@ -3,9 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, BehaviorSubject } from "rxjs";
 import { CreatePlayerClass } from "src/app/Models/createPlayer";
-import { JwtAuth } from "src/app/Models/jwtAuth";
-import { Coachs, CreatePlayerModel, NationalPlayerModel, PlayerModel } from "src/app/Models/player";
-import { TeamModels } from "src/app/Models/team";
+import { CreatePlayerModel, PlayerModel } from "src/app/Models/player";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -27,7 +25,7 @@ export class CreatePlayerService {
     }
 
     GetAllPlayerFromApi(): Observable<PlayerModel[]> {
-        let PlayersApi = `${environment.apiUrl}/Player/GetAllPlayers/`;
+        let PlayersApi = `${environment.apiUrl}/Player/GetPlayersByUser/`;
         return this.http.get<PlayerModel[]>(PlayersApi,{headers: this.GetHeaders() })
     }
 

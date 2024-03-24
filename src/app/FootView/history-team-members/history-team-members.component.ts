@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridReadyEvent } from 'ag-grid-community';
 import { Coachs } from 'src/app/Models/player';
+import { teamsName } from 'src/app/Models/teamsName';
 import { HistoryTeamMembersService } from 'src/app/services/FootballData/historyTeamMembersApi.service';
+import { teamNamesService } from 'src/app/services/ApiService/TeamsName.service';
 
 @Component({
   selector: 'app-history-team-members',
@@ -13,11 +15,28 @@ import { HistoryTeamMembersService } from 'src/app/services/FootballData/history
 export class HistoryTeamMembersComponent implements OnInit {
 
   sideNavStatus: boolean = false;
-  constructor(private http: HttpClient, private router: Router, private historyTeamMembers: HistoryTeamMembersService){}
+  constructor(private http: HttpClient, private router: Router, private historyTeamMembers: HistoryTeamMembersService, private teamNamesService: teamNamesService){}
 
   seasons: number[] = Array.from({length: 2022 - 2009 + 1}, (_, index) => index + 2009);
-  leagues: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
-  selectedLeagueId!: number;
+  // National Teams
+  nationalTeamList: teamsName[] = [];
+
+  //premier League
+  premierLeagueList: teamsName[] = [];
+
+  // Liga
+  laligaList: teamsName[] = [];
+
+  // Serie A
+  seriaAList: teamsName[] = [];
+
+  // Ligue 1
+  ligue1List: teamsName[] = [];
+  
+  // Bundesliga
+  bundesligaList: teamsName[] = [];
+
+  selectedTeamId!: number;
   selectedSeason!: number;
   gridReadyParams!: GridReadyEvent;
 
@@ -34,21 +53,29 @@ export class HistoryTeamMembersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedSeason = this.seasons[12];
-    this.selectedLeagueId = this.leagues[1]
-    this.getPlayers(this.selectedSeason, this.selectedLeagueId);
+    this.selectedSeason = this.seasons[1];
+    this.selectedTeamId
+    this.nationalTeamList = this.teamNamesService.getNationalCountries();
+    this.premierLeagueList = this.teamNamesService.getPremierLeague();
+    this.laligaList = this.teamNamesService.getLiga();
+    this.ligue1List = this.teamNamesService.getLigue1();
+    this.seriaAList = this.teamNamesService.getSerieA();
+
+    this.selectedTeamId = this.nationalTeamList[1].id;
+
+    this.getPlayers(this.selectedSeason, this.selectedTeamId);
   }
 
   onSeasonSelected(season: number) {
     this.selectedSeason = season
-    this.selectedLeagueId
-    this.getPlayers(this.selectedSeason, this.selectedLeagueId)
+    this.selectedTeamId
+    this.getPlayers(this.selectedSeason, this.selectedTeamId)
   }
 
-  onLeagueSelected(league: number) {
+  onTeamSelected(league: number) {
     this.selectedSeason
-    this.selectedLeagueId = league;
-    this.getPlayers(this.selectedSeason, this.selectedLeagueId)
+    this.selectedTeamId = league;
+    this.getPlayers(this.selectedSeason, this.selectedTeamId)
   }
 
   getPlayers(season: number, league: number) {

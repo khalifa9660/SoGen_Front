@@ -9,7 +9,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
   })
 
-export class TeamService {
+export class LeagueService {
     errorMessage!: string;
     errorHandl:any
     
@@ -23,7 +23,7 @@ export class TeamService {
         });
     }
 
-    GetTeamsFromApi(leagueId:number): Observable<TeamModels[]> {
+    GetLeaguesFromApi(leagueId:number): Observable<TeamModels[]> {
         let TeamsApi = `${environment.apiUrl}/FootBallApi/Teams/${leagueId}`;
         return this.http.get<TeamModels[]>(TeamsApi,{headers: this.GetHeaders() })
     }

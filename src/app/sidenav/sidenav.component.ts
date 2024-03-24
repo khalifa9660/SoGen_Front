@@ -21,7 +21,7 @@ export class SidenavComponent {
     },
     {
       number: "3",
-      name: "Teams",
+      name: "Leagues",
       icon: "bi bi-align-top",
     },
     {

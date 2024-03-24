@@ -2,14 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
-import { PlayerModel, TeamPlayerModel } from 'src/app/Models/player';
+import { teamsName } from 'src/app/Models/teamsName';
+import { teamNamesService } from 'src/app/services/ApiService/TeamsName.service';
 import { PlayersService } from 'src/app/services/FootballData/playersApi.service';
-
-interface DataRow {
-  team: TeamPlayerModel;
-  players: PlayerModel[];
-}
-
 
 @Component({
   selector: 'app-players',
@@ -18,10 +13,29 @@ interface DataRow {
 })
 export class PlayersComponent implements OnInit{
   sideNavStatus: boolean = false;
-  constructor(private http: HttpClient, private router: Router, private playerService: PlayersService){}
+  constructor(private http: HttpClient, private router: Router, private playerService: PlayersService, private teamNamesService: teamNamesService){}
   
-  teamsList: number[] = Array.from({length: 98 - 1 + 1}, (_, index) => index + 1);
+  // National Teams
+  nationalTeamList: teamsName[] = [];
+
+  //premier League
+  premierLeagueList: teamsName[] = [];
+
+  // Liga
+  laligaList: teamsName[] = [];
+
+  // Serie A
+  seriaAList: teamsName[] = [];
+
+  // Ligue 1
+  ligue1List: teamsName[] = [];
+  
+  // Bundesliga
+  bundesligaList: teamsName[] = [];
+
+
   selectedteamId!: number;
+
   gridReadyParams!: GridReadyEvent;
 
 
@@ -40,7 +54,14 @@ export class PlayersComponent implements OnInit{
   ];
 
   ngOnInit() {
-    this.selectedteamId = this.teamsList[1]
+    this.nationalTeamList = this.teamNamesService.getNationalCountries();
+    this.premierLeagueList = this.teamNamesService.getPremierLeague();
+    this.laligaList = this.teamNamesService.getLiga();
+    this.ligue1List = this.teamNamesService.getLigue1();
+    this.seriaAList = this.teamNamesService.getSerieA();
+    this.bundesligaList = this.teamNamesService.getBundesliga();
+
+    this.selectedteamId = this.nationalTeamList[1].id;
     this.getPlayers(this.selectedteamId);
   }
 
