@@ -75,6 +75,22 @@
               {{ errorMessage }}
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class='bx bxs-lock-alt'></i></span>
+              <input type="password" [(ngModel)]="registerDto.confirmPassword" name="confirmPassword" class="form-control" placeholder="confirm Password" id="confirmPassword" formControlName="confirmPassword" required>
+            </div>
+            <div *ngIf="confirmPasswordControl?.invalid && confirmPasswordControl?.touched">
+              <span *ngIf="confirmPasswordControl?.errors?.['required'] && !this.submitted" class="text-danger">Confirm Password is required</span>
+              <span *ngIf="confirmPasswordControl?.errors?.['pattern']" class="text-danger">12 characters minimum including an uppercase letter, 1 special character and 1 number</span>
+              <span *ngIf="confirmPasswordControl?.errors?.['MustMatch']" class="text-danger">Confirm Password isn't the same</span>
+            </div>
+            <div *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
+          </div>
           
           <button type="submit" class="btn btn-primary" (click)="register(registerDto)" [disabled]="registerForm.invalid">
             Sign up
