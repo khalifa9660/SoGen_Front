@@ -84,7 +84,6 @@
             </div>
             <div *ngIf="confirmPasswordControl?.invalid && confirmPasswordControl?.touched">
               <span *ngIf="confirmPasswordControl?.errors?.['required'] && !this.submitted" class="text-danger">Confirm Password is required</span>
-              <span *ngIf="confirmPasswordControl?.errors?.['pattern']" class="text-danger">12 characters minimum including an uppercase letter, 1 special character and 1 number</span>
               <span *ngIf="confirmPasswordControl?.errors?.['MustMatch']" class="text-danger">Confirm Password isn't the same</span>
             </div>
             <div *ngIf="errorMessage">
