@@ -6,7 +6,8 @@ body{
   }
 
   .content .logo{
-    font-size: 30px;
+    font-size: 24px;
+    color: azure;
   }
   
   .background {
@@ -39,11 +40,8 @@ body{
  
   
   .container .content {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 95%;
+    width: 56%;
+    height: 70%;
     background: transparent;
     padding: 80px;
     color: #e4e4e4;
@@ -51,66 +49,30 @@ body{
     justify-content: space-between;
     flex-direction: column;
   }
+
+  .container .content a{
+    position: relative;
+    width: 35%;
+    justify-content: center;
+    align-items: center;
+    left: 30%;
+  }
+
   
-  .text-sci h2 {
-    font-size: 40px;
-    line-height: 1;
+.text-sci h3 {
+   line-height: 1;
+   color: azure;
+   font-size: 17px;
   }
   
-  .text-sci h2 span{
-    font-size: 25px;
+  .text-sci h3 span{
+    font-size: 40px;
+    color: azure;
   }
   
   .text-sci p {
     font-size: 16px;
     margin: 20px 0;
-  
+    color: azure;
   }
-  
-  .container .logreg-box {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: calc(100% - 58%);
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .form-box .remember-forgot{
-    font-size: 14.5px;
-    font-weight: 500;
-    margin: 75px 0 15px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .remember-forgot label input {
-    accent-color: #e4e4e4;
-    margin-right: 3px;
-  }
-  
-  .remember-forgot a {
-    color: #e4e4e4;
-    text-decoration: none;
-  }
-  
-  button  {
-    width: 100%;
-    height: 45px;
-    background: #c4103d;
-    border: none;
-    outline: none;
-    border-radius: 16px;
-    color: #e4e4e4;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
-  }
-  
-  button:hover {
-    background: linear-gradient(to bottom, #353535, #1a1a1a);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  }
-  
-  button:active {
-    background: #1a1a1a;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  }
+
